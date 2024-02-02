@@ -8,16 +8,21 @@ body {
   justify-content: center;
 }
 
+#mode-change-btn {
+  width: 3rem;
+  cursor: pointer;
+}
+
 #calculator-section {
   width: 50rem;
-  height: 70rem;
+  height: 75rem;
   background-color: #97c3fd;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 3rem 2rem 1.5rem 2rem;
+  padding: 0.2rem 2rem 1.5rem 2rem;
 }
 
 #display {
