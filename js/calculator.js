@@ -3,6 +3,13 @@ const buttonSection = document.querySelector("#buttons");
 const modeChangeBtn = document.querySelector("#mode-change-btn");
 const calculatorSection = document.querySelector("#calculator-section");
 const buttons = document.getElementsByTagName("button");
+const button = Array.from(buttons);
+console.log(button);
+const toggleList = [calculatorSection, buttons, display];
+
+function selectBtn(btn) {
+  btn.classList.toggle("keydown");
+}
 
 let currentInput = "";
 
@@ -16,7 +23,6 @@ function handleButtonClick(input) {
         )();
         currentInput = result.toString();
       } catch (error) {
-        console.log(error);
         currentInput = "에러";
       }
       break;
@@ -27,6 +33,10 @@ function handleButtonClick(input) {
       currentInput += input;
   }
   display.textContent = currentInput;
+}
+
+function changeMode(list) {
+  list.classList.toggle("dark");
 }
 
 // 입력값 display에 띄우는 이벤트 등록
@@ -45,6 +55,6 @@ modeChangeBtn.addEventListener("click", function () {
       toggleList.forEach(changeMode));
 });
 
-function changeMode(list) {
-  list.classList.toggle("dark");
-}
+buttons.addEventListener("click", function (event) {
+  selectBtn(evnet.target);
+});
