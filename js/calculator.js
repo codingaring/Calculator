@@ -1,9 +1,8 @@
 const display = document.querySelector("#display");
-const buttons = document.querySelector("#buttons");
+const buttonSection = document.querySelector("#buttons");
 const modeChangeBtn = document.querySelector("#mode-change-btn");
 const calculatorSection = document.querySelector("#calculator-section");
-const button = document.getElementsByTagName("button");
-const toggleList = [calculatorSection, button, display];
+const buttons = document.getElementsByTagName("button");
 
 let currentInput = "";
 
@@ -31,7 +30,7 @@ function handleButtonClick(input) {
 }
 
 // 입력값 display에 띄우는 이벤트 등록
-buttons.addEventListener("click", function (event) {
+buttonSection.addEventListener("click", function (event) {
   handleButtonClick(event.target.textContent);
 });
 
@@ -40,16 +39,12 @@ modeChangeBtn.addEventListener("click", function () {
   modeChangeBtn.getAttribute("src") === "./imgs/dark-mode-icon.png"
     ? (modeChangeBtn.setAttribute("src", "./imgs/bright-mode-icon-white.png"),
       modeChangeBtn.setAttribute("alt", "기본 모드"),
-      toggleList.forEach(ModeTodark))
+      toggleList.forEach(changeMode))
     : (modeChangeBtn.setAttribute("src", "./imgs/dark-mode-icon.png"),
       modeChangeBtn.setAttribute("alt", "다크 모드"),
-      toggleList.forEach(ModeToBright));
+      toggleList.forEach(changeMode));
 });
 
-function ModeTodark(list) {
-  list.classList.add("dark");
-}
-
-function ModeToBright(list) {
-  list.classList.remove("dark");
+function changeMode(list) {
+  list.classList.toggle("dark");
 }
